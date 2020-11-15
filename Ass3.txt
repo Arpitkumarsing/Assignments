@@ -1,0 +1,144 @@
+1.package CoreJava2;
+class prepost
+{
+    public static void main(String[]args)
+    {
+        int x=5;
+        int z =x++ + ++x;
+        int y = --x + x--;
+        System.out.println(z);
+        System.out.println(y);
+    }
+}
+
+
+2.package CoreJava2;
+class updowncasting 
+{
+    public static void main(String[]args)
+    {
+        int x =9;
+        double y = x;
+        System.out.println(y);
+        
+        byte m=9;
+        int n =m;
+        System.out.println(n);
+        
+        int a=9;
+        byte b=(byte)a;
+        System.out.println(b);
+        
+        double c=128.0;
+        byte d= (byte)c;
+        System.out.println(d);
+    }
+}
+
+3.package CoreJava2;
+import java.util.Scanner;
+class array
+{
+    public static void main(String[]args)
+    {
+        Scanner sc =new Scanner(System.in);
+        int n=sc.nextInt();
+        int a[] =new int[n];
+        for(int i=0;i<n;i++)
+        {
+           a[i]=sc.nextInt(); 
+        }
+        for(int j=0;j<n;j++)
+        {
+            System.out.println(a[j]);
+        }
+    }
+}
+
+
+4. package CoreJava2;
+class Armstrongno
+{
+    public static void main(String[]args)
+    {
+        int c=0,a,temp;  
+    int n=153;//It is the number to check armstrong  
+    temp=n;  
+    while(n>0)  
+    {  
+    a=n%10;  
+    n=n/10;  
+    c=c+(a*a*a);  
+    }  
+    if(temp==c)  
+    System.out.println("armstrong number");   
+    else  
+        System.out.println("Not armstrong number");     
+    }
+}
+
+
+5.a.package CoreJava2;
+import java.util.Scanner;
+class fibonacci 
+{
+    public static void main(String[]args)
+    {
+        Scanner sc =new Scanner(System.in);
+        int n =sc.nextInt();
+        int n1=0;
+        int n2=1;
+        int n3;
+        for(int i=2;i<n;i++)
+        {
+            n3 =n1+n2;
+            System.out.println(n3);
+            n2=n1;
+            n1=n2;
+        }
+        
+    }
+}
+
+5.b.package CoreJava2;
+class evennumberseries
+{
+    public static void main(String[]args)
+    {
+        int limit = 50;
+               
+                System.out.println("Printing Even numbers between 1 and " + limit);
+               
+                for(int i=1; i <= limit; i++)
+                {
+                       
+                        
+                        if( i % 2 == 0)
+                        {
+                                System.out.print(i + " ");
+                        }
+               }
+    }
+}
+
+
+5.c.package CoreJava2;
+class evennumberseries
+{
+    public static void main(String[]args)
+    {
+        int limit = 50;
+               
+                System.out.println("Printing Even numbers between 1 and " + limit);
+               
+                for(int i=1; i <= limit; i++)
+                {
+                       
+                        
+                        if( i % 2 == 0)
+                        {
+                                System.out.print(i + " ");
+                        }
+               }
+    }
+}
