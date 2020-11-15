@@ -1,0 +1,183 @@
+1.package CoreJava3;
+import java.util.Scanner;
+class Arrayj
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int arr1[]=new int[5];
+		int arr2[]=new int[3];
+		int arr3[]=new int[8];
+		for(int i=0;i<5 ;i++)
+		{
+			arr1[i]=sc.nextInt();
+		}
+		for(int i=0;i<3 ;i++)
+		{
+			arr2[i]=sc.nextInt();
+		}
+		int j=0;
+		for(int i=0; i<8;i++)
+		{
+			if(j<5)
+			{
+			arr3[i]=arr1[j];
+			}		
+			i++;
+
+			if(j<3)
+			{
+			arr3[i]=arr2[j];
+			}
+			j++;
+			if(i==7)
+			{
+			arr3[i]=arr1[j];
+			}
+		}
+		for(int i=0;i<8;i++)
+		{
+			System.out.print(arr3[i]);
+		}
+		System.out.println();
+	}
+}
+
+2.package CoreJava3;
+import java.util.Scanner;
+class mergearray
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int n1=sc.nextInt();
+		int n2=n1-2;
+		int arr[]=new int[n1];
+         	int arr1[]=new int[n2]; 
+		for(int i=0 ;i<n1 ; i++)
+		{
+			arr[i]=sc.nextInt();
+		}
+		
+		for(int i=0 ; i<n2 ; i++)
+		{
+			arr1[i]=(arr[i]+arr[i+1]+arr[i+2])/3;
+		}
+                 for(int i=0;i<n2;i++)
+        	 {
+ 			System.out.println(arr1[i]);
+		  }
+	
+
+	}
+}
+
+
+3.package CoreJava3;
+import java.util.Scanner;
+class series
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int n1 = sc.nextInt();
+		for(int i=1 ; i<=n1 ; i++)
+		{
+			if(i%2==0)
+			{
+				System.out.print((i*i)+" ");
+			}else
+			{
+				System.out.print((i*i*i)+" ");
+			}
+		}
+	}
+}
+
+
+4.a).package CoreJava3;
+class Ascending
+{
+    public static void main(String[]args)
+    {
+        int count=0;
+        /*int a[]={5,14,35,90,139};
+        for(int i=0;i<a.length-1;i++)
+        {
+            if(a[i]<a[i+1])
+            {
+               count++;
+            }
+        }
+        if(count>0)
+         System.out.println("Array is ascending");
+    }
+}
+
+4.b).package CoreJava3;
+import java.util.Scanner;
+class Ascending
+{
+  public static void main(String[]args)
+  {
+       int a[]={139,90,35,30,25};
+        for(int i=0;i<a.length-1;i++)
+        {
+            if(a[i]>a[i+1])
+            {
+               count++;
+            }
+        }
+        if(count>0)
+         System.out.println("Array is descending");
+   }
+}
+
+5.package CoreJava3;
+import java.util.Scanner;
+class decimalplaces
+{
+    public static void main(String[]args)
+    {
+        Scanner sc = new Scanner(System.in);
+        Double n = sc.nextDouble();
+        String str = Double.toString(n);
+        System.out.println(str);
+        int m = str.length();
+       int l= str.indexOf(".");
+       int g = m-l-1;
+        System.out.println(g);
+        
+    }
+}
+
+
+6. package CoreJava3;
+class thirdlargest
+{
+    public static void main(String[]args)
+    {
+         int a[] ={24,54,31,16,82,45,67};
+         int c=0;
+         int g[]=new int [7];
+        
+         for(int i=0;i<a.length;i++)
+         {
+            if(a[i]>c)
+            {
+               c=a[i];
+              
+                System.out.println(c);
+          
+            }
+            g[a.length-i-1]=c;
+            
+         }
+        System.out.println("third largest number is :");
+         
+             System.out.println(g[4]);
+         
+    }
+}
+
+
