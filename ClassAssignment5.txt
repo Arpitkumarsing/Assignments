@@ -1,0 +1,459 @@
+package Assg;
+//1
+/*
+import java.util.*;
+class Student
+{
+    int rollno;
+    String name;
+    void setData(int rollno,String name)
+    {
+        this.rollno=rollno;
+        this.name=name;
+    }
+    void showData()
+    {
+        System.out.println("rollno="+rollno+"\nname="+name);
+    }
+}
+class StudentDemo
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int rollno=sc.nextInt();
+        String name=sc.next();
+        Student std=new Student();
+        std.setData(rollno,name);
+        std.showData();
+    }
+}*/
+
+//2
+/*
+import java.util.*;
+class Circle
+{
+    static double piy=3.14;
+    int radius;
+    double area;
+    void init(int radius)
+    {
+        this.radius=radius;
+    }
+    void calculateArea()
+    {
+        area=piy*radius*radius;
+    }
+    void display()
+    {
+        System.out.println("radius="+radius+"\narea="+area);
+    }
+}
+class CircleDemo
+{
+        public static void main(String args[])
+        {
+            Scanner sc=new Scanner(System.in);
+            int radius=sc.nextInt();
+            Circle cir=new Circle();
+            cir.init(radius);
+            cir.calculateArea();
+            cir.display();
+        }
+}*/
+
+//3
+/*
+import java.util.*;
+class MathOperation
+{
+    static int add(int n1,int n2)
+    {
+        return n1+n2;
+    }
+    int subtract(int n1,int n2 )
+    {
+        if(n1>n2)  return n1-n2;
+        else return n2-n1;
+       
+    }
+    int multiply(int n1,int n2)
+    {
+        return n1*n2;
+    }
+    int pow(int n1,int n2)
+    {
+        return (int)Math.pow(n1,n2);
+    }
+}
+class Demo
+{
+    public static void main(String args[])
+    {
+        Scanner sc= new Scanner(System.in);
+        int n1=sc.nextInt();
+        int n2=sc.nextInt();
+        MathOperation mo=new MathOperation();
+        System.out.println("addition="+MathOperation.add(n1,n2));
+        System.out.println("substraction="+mo.subtract(n1,n2));
+        System.out.println("multiplycation="+mo.multiply(n1,n2));
+        System.out.println("power="+mo.pow(n1,n2));
+    }
+}*/
+
+//4
+/*
+import java.util.*;
+class MathOperation
+{
+    void multiply(int n1,int n2)
+    {
+        System.out.println("multiplication="+n1*n2);
+    }
+    void multiply(float f1,float f2,float f3)
+    {
+        System.out.println("multiplication="+f1*f2*f3);
+    }
+    void multiply(int arr[])
+    {
+        int mul=1;
+        for(int i=0 ; i<arr.length ;i++)
+        {
+            mul=mul*arr[i];
+        }
+        System.out.println("multiplication="+mul);
+    }
+    void multiply(double d1,int n2)
+    {
+        System.out.println("multiplication="+d1*n2);
+    }
+}
+class Math
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int n1=sc.nextInt();
+        int n2=sc.nextInt();
+        float f1=sc.nextFloat();
+        float f2=sc.nextFloat();
+        float f3=sc.nextFloat();
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0 ;i<arr.length ; i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        double d1=sc.nextDouble();
+        MathOperation mt=new MathOperation();
+        mt.multiply(n1,n2);
+        mt.multiply(f1,f2,f3);
+        mt.multiply(arr);
+        mt.multiply(d1,n2);   
+    }
+}*/
+//5
+/*
+import java.util.*;
+class Employee
+{
+    static int empno;
+    double salary;
+    static double totalSalary;
+    Employee(double salary)
+    {
+        this.empno++;
+        this.salary=salary;
+        this.totalSalary=this.totalSalary+salary;
+    }
+   static void display()
+    {
+        System.out.println("totalemployee="+empno+"totalsalary="+totalSalary);
+    }
+}
+class EmployeeDemo
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        Employee emp[]=new Employee[n];
+        for(int i=0; i<n ; i++)
+        {
+            double sal=sc.nextDouble();
+            emp[i]=new Employee(sal);
+        }
+        Employee.display();
+    }
+}*/
+
+//6
+/*
+import java.util.*;
+class Product
+{
+    String pid;
+    int price;
+    int qty;
+     int sum=0;
+     Product()
+     {
+     }
+    Product(String pid,int price,int qty)
+    {
+        this.pid=pid;
+        this.price=price;
+        this.qty=qty;
+    }
+    String fun()
+    {
+        return pid;
+    }
+     int cal(Product s )
+    {
+        int mul= s.price * s.qty;
+      return mul;
+    }
+}
+class Assg1
+{
+    public static void main(String args[])
+    {
+        Product pr[]=new Product[5];
+        Product q=new Product();
+        Scanner sc=new Scanner(System.in);
+        for(int i=0 ; i<5 ; i++)
+        {
+            String s=sc.next();
+            int p=sc.nextInt();
+            int qty=sc.nextInt();
+            pr[i]=new Product(s,p,qty);
+        }
+        int max=0;
+        int temp=0;
+        for(int i=0 ; i<5 ; i++)
+        {
+            if(pr[i].price>max)
+            {
+                max=pr[i].price;
+                temp=i;
+            }
+        }
+        int sum=0;
+        for(int i=0 ; i<5 ; i++)
+        {
+            sum =sum + q.cal(pr[i]);
+        }
+        System.out.println(sum);
+        System.out.println("pid="+pr[temp].fun());
+    }
+}*/
+
+
+
+
+//7
+/*
+import java.util.*;
+class OneBHK
+{
+    int roomArea;
+    int hallArea;
+    int price;
+    static double amt1;
+    OneBHK()
+    {
+        this.roomArea=0;
+        this.hallArea=0;
+        this.price=0;
+        this.amt1=0;
+    }
+    OneBHK(int a,int b,int c)
+    {
+        this.roomArea=a;
+        this.hallArea=b;
+        this.price=c;
+        this.amt1=this.amt1+c;
+    }
+    void show()
+    {
+        System.out.println("roomarea="+roomArea+"\nhallarea="+hallArea+"\nprice="+price);
+    }
+}
+class TwoBHK extends OneBHK
+{
+    int room2Area;
+    TwoBHK()
+    {
+        super();
+        this.room2Area=0;
+    }
+    TwoBHK(int d,int a,int b,int c)
+    {
+        super(a,b,c);
+        this.room2Area=d;
+    }
+    void show()
+    {
+        super.show();
+        System.out.println("room2area="+room2Area);
+    }
+}
+class Demo
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        TwoBHK tw[]=new TwoBHK[3];
+        for(int i=0 ;i<3 ; i++)
+        {
+            System.out.println("Enter room area");
+            int a=sc.nextInt();
+            System.out.println("Enter hall area");
+            int b=sc.nextInt();
+            System.out.println("Enter price area");
+            int c=sc.nextInt();
+            System.out.println("Enter room2 area");
+            int d=sc.nextInt();
+            tw[i]=new TwoBHK(d,c,b,a);
+        }
+        for(int i=0 ; i<3 ; i++)
+        {
+            tw[i].show();
+        }
+        System.out.println(OneBHK.amt1);
+    }
+}*/
+//8
+/*
+import java.util.*;
+class Faculty
+{
+    Scanner sc=new Scanner(System.in);
+    int facultyId;
+    double salary1;
+    void input()
+    {
+        System.out.println("Enter faculty id");
+        this.facultyId=sc.nextInt();
+    }
+    void printSalary()
+    {
+        System.out.println("salary="+salary1);
+    }
+}
+class FullTimeFaculty extends Faculty
+{
+    double basicSalary;
+    double allowance;
+    void input()
+    {
+        super.input();
+        System.out.println("Enter basic salary");
+        this.basicSalary=sc.nextDouble();
+        System.out.println("Enter allowance");
+        this.allowance=sc.nextDouble();
+        super.salary1=(this.basicSalary+this.allowance);
+    }
+}
+class PartTimeFaculty extends Faculty
+{
+    int workingHours;
+    double ratePerHour;
+    void input()
+    {
+        super.input();
+        System.out.println("Enter working hours");
+        this.workingHours=sc.nextInt();
+        System.out.println("Enter rate per day");
+        this.ratePerHour=sc.nextDouble();
+        super.salary1=(this.workingHours*this.ratePerHour);
+    }
+}
+class Demo
+{
+    public static void main(String args[])
+    {
+        FullTimeFaculty full=new FullTimeFaculty();
+        full.input();
+        full.printSalary();
+        PartTimeFaculty pf=new PartTimeFaculty();
+        pf.input();
+        pf.printSalary();
+                
+        
+    }
+}*/
+//9
+/*
+import java.util.*;
+abstract class Professor
+{
+     Scanner sc=new Scanner(System.in);
+    int data;
+    abstract void processing();
+    void showData()
+    {
+        System.out.println(data);
+    }
+}
+class Factorial extends Professor
+{
+    void processing()
+    {
+        System.out.println("Enter a number");
+        int n=sc.nextInt();
+        int temp=n;
+       for(int i=1 ; i<n; i++)
+       {
+           temp=temp*i;
+       }
+       super.data=temp;
+       
+    }
+}
+class Circle extends Professor
+{
+    
+    void processing()
+    {
+        System.out.println("Enter a radius");
+        int r =sc.nextInt();
+        double area=3.14*r*r;
+        super.data=(int)area;        
+    }
+}
+class Demo
+{
+    public static void main(String args[])
+    {
+    Scanner sc=new Scanner(System.in);
+    Factorial fact=new Factorial();
+    Circle circ = new Circle();
+    int n;
+    do{
+        System.out.println("Enter a choice");
+        System.out.println("for factoria choose 1\n for area choose 2\n for exit choose 0");
+        n=sc.nextInt();
+    switch(n)
+            {
+                case 1:
+                    fact.processing();
+                    fact.showData();
+                    break;
+                case 2:
+                    circ.processing();
+                    circ.showData();
+                break; 
+            }
+    }while(n!=0);
+    System.out.println("Exit");
+    
+    }
+}*/
+
+
+
+
+
