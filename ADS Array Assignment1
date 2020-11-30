@@ -1,0 +1,141 @@
+1.import java.io.*; 
+import java.lang.*; 
+import java.util.*; 
+  
+class program1 { 
+  
+    // Function to add x in arr 
+    public static int[] addX(int n, int arr[], int x) 
+    { 
+        int i; 
+  
+       
+        int newarr[] = new int[n + 1]; 
+  
+        
+        for (i = 0; i < n; i++) 
+            newarr[i] = arr[i]; 
+  
+        newarr[n] = x; 
+  
+        return newarr; 
+    } 
+  
+
+    public static void main(String[] args) 
+    { 
+  
+        int n = 10; 
+        int i; 
+  
+       
+        int arr[] 
+            = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; 
+  
+        
+        System.out.println("Initial Array:\n"
+                           + Arrays.toString(arr)); 
+  
+       
+        int x = 50; 
+  
+         
+        arr = addX(n, arr, x); 
+  
+       
+        System.out.println("\nArray with " + x 
+                           + " added:\n"
+                           + Arrays.toString(arr)); 
+    } 
+} 
+
+
+2.import java.util.Arrays; 
+  
+class removearray
+ { 
+  
+    public static int[] removeTheElement(int[] arr, 
+                                          int index) 
+    { 
+  
+       
+        if (arr == null|| index < 0|| index >= arr.length) 
+         { 
+  
+            return arr; 
+        } 
+  
+       
+        int[] anotherArray = new int[arr.length - 1]; 
+  
+        
+        for (int i = 0, k = 0; i < arr.length; i++) { 
+  
+            
+            if (i == index) { 
+                continue; 
+            } 
+  
+            
+            anotherArray[k++] = arr[i]; 
+        } 
+  
+         
+        return anotherArray; 
+    } 
+  
+    
+    public static void main(String[] args) 
+    { 
+  
+         
+        int[] arr = { 1, 2, 3, 4, 5 }; 
+  
+        
+        System.out.println("Original Array: "
+                           + Arrays.toString(arr)); 
+  
+        
+        int index = 2; 
+  
+   
+        System.out.println("Index to be removed: "
+                           + index); 
+  
+     
+        arr = removeTheElement(arr, index); 
+  
+        
+        System.out.println("Resultant Array: "
+                           + Arrays.toString(arr)); 
+    } 
+} 
+
+
+
+3.class multiplication
+{  
+public static void main(String args[])
+{  
+
+int a[][]={{1,1,1},{2,2,2},{3,3,3}};    
+int b[][]={{1,1,1},{2,2,2},{3,3,3}};    
+int c[][]=new int[3][3];  
+for(int i=0;i<3;i++)
+{    
+for(int j=0;j<3;j++)
+{    
+c[i][j]=0;      
+for(int k=0;k<3;k++)      
+{      
+ c[i][j]+=a[i][k]*b[k][j];      
+}
+System.out.print(c[i][j]+" ");    
+}
+System.out.println();    
+}    
+}
+} 
+
+ 
