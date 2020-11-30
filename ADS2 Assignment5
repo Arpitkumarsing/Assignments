@@ -1,0 +1,430 @@
+1.import java.io.*; 
+import java.lang.*; 
+import java.util.*; 
+  
+class Array { 
+  
+    
+    public static int[] addX(int n, int arr[], int x) 
+    { 
+        int i; 
+  
+       
+        int newarr[] = new int[n + 1]; 
+        for (i = 0; i < n; i++) 
+            newarr[i] = arr[i]; 
+  
+        newarr[n] = x; 
+  
+        return newarr; 
+    } 
+    public void f(int arr[],int n)
+    {
+       int newarr1[] = new int[n-1];
+        for(i=0;i<n-1;i++)
+         {
+              newarr1[i]=newarr[i];
+               System.out.println(newarr1[i]);
+         } 
+  
+    
+    public static void main(String[] args) 
+    { 
+  
+        int n = 10; 
+        int i; 
+        int arr[] 
+            = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; 
+  
+        System.out.println( Arrays.toString(arr)); 
+        int x = 50; 
+        arr = addX(n, arr, x); 
+        System.out.println("\nArray with " + x 
+                           + " added:\n"
+                           + Arrays.toString(arr)); 
+    } 
+} 
+
+2. import java.util.Scanner;  
+class Stack   
+{  
+    int top;   
+    int maxsize = 10;  
+    int[] arr = new int[maxsize];  
+      
+      
+    boolean isEmpty()  
+    {  
+        return (top < 0);  
+    }  
+    Stack()  
+    {  
+        top = -1;  
+    }  
+    boolean push (Scanner sc)  
+    {  
+        if(top == maxsize-1)  
+        {  
+            System.out.println("Overflow !!");  
+            return false;  
+        }  
+        else   
+        {  
+            System.out.println("Enter Value");  
+            int val = sc.nextInt();  
+            top++;  
+            arr[top]=val;  
+            System.out.println("Item pushed");  
+            return true;  
+        }  
+    }  
+    boolean pop ()  
+    {  
+        if (top == -1)  
+        {  
+            System.out.println("Underflow !!");  
+            return false;  
+        }  
+        else   
+        {  
+            top --;   
+            System.out.println("Item popped");  
+            return true;  
+        }  
+    }  
+    void display ()  
+    {  
+        System.out.println("Printing stack elements .....");  
+        for(int i = top; i>=0;i--)  
+        {  
+            System.out.println(arr[i]);  
+        }  
+    }  
+}  
+public class Stack_Operations {  
+public static void main(String[] args) {  
+    int choice=0;  
+    Scanner sc = new Scanner(System.in);  
+    Stack s = new Stack();  
+    System.out.println("*********Stack operations using array*********\n");  
+    System.out.println("\n------------------------------------------------\n");  
+    while(choice != 4)  
+    {  
+        System.out.println("\nChose one from the below options...\n");  
+        System.out.println("\n1.Push\n2.Pop\n3.Show\n4.Exit");  
+        System.out.println("\n Enter your choice \n");        
+        choice = sc.nextInt();  
+        switch(choice)  
+        {  
+            case 1:  
+            {   
+                s.push(sc);  
+                break;  
+            }  
+            case 2:  
+            {  
+                s.pop();  
+                break;  
+            }  
+            case 3:  
+            {  
+                s.display();  
+                break;  
+            }  
+            case 4:   
+            {  
+                System.out.println("Exiting....");  
+                System.exit(0);  
+                break;   
+            }  
+            default:  
+            {  
+                System.out.println("Please Enter valid choice ");  
+            }   
+        }  
+    }  
+}  
+}
+
+
+3.  import java.util.*; 
+  
+public class BalancedBrackets { 
+  
+   
+    static boolean areBracketsBalanced(String expr) 
+    { 
+        
+        Deque<Character> stack 
+            = new ArrayDeque<Character>(); 
+  
+       
+        for (int i = 0; i < expr.length(); i++)  
+        { 
+            char x = expr.charAt(i); 
+  
+            if (x == '(' || x == '[' || x == '{')  
+            { 
+                
+                stack.push(x); 
+                continue; 
+            } 
+  
+            if (stack.isEmpty()) 
+                return false; 
+            char check; 
+            switch (x) { 
+            case ')': 
+                check = stack.pop(); 
+                if (check == '{' || check == '[') 
+                    return false; 
+                break; 
+  
+            case '}': 
+                check = stack.pop(); 
+                if (check == '(' || check == '[') 
+                    return false; 
+                break; 
+  
+            case ']': 
+                check = stack.pop(); 
+                if (check == '(' || check == '{') 
+                    return false; 
+                break; 
+            } 
+        } 
+  
+       
+        return (stack.isEmpty()); 
+    } 
+  
+    
+    public static void main(String[] args) 
+    { 
+        String expr = "([{}])"; 
+  
+        
+        if (areBracketsBalanced(expr)) 
+            System.out.println("Balanced "); 
+        else
+            System.out.println("Not Balanced "); 
+    } 
+} 
+
+
+4.  package DSA;
+class Queue1
+{
+    int front=0;
+    int rear=-1;
+    int size=5;
+    int a[] = new int[size];
+    void enqueue(int x)
+    {
+        if(rear==size-1)
+        {
+             //  System.out.println(rear);
+            System.out.println("queue is full");
+        }
+        else
+        {
+            a[++rear]=x;
+            //System.out.println(rear);
+        }
+    }
+    void dequeue()
+    {
+          if(front == -1 & rear == -1)  
+          {  
+                     System.out.println("\nUNDERFLOW\n");  
+                           
+         }  
+          else if(front == rear)  
+          {  
+                    front = -1;  
+                    rear = -1;  
+          }  
+         else if(front == size -1)  
+         {  
+                 front = 0;  
+         } else
+         {
+              front = front + 1;  
+         }
+        for(int i=front;i<=rear;i++)
+        {
+            System.out.print(a[i]+" ");
+        }
+    }
+    void display()
+    {
+        for(int i=0;i<size;i++)
+        {
+            System.out.print(a[i]+" ");
+        }
+    }
+}
+class Queue
+{
+    public static void main(String[]args)
+    {
+        Queue1 obj = new Queue1();
+        obj.enqueue(30);
+        obj.enqueue(50);
+        obj.enqueue(60);
+        obj.enqueue(70);
+        obj.enqueue(80);
+       // obj.enqueue(100);
+        obj.dequeue();
+      obj.dequeue();
+        //dequeue();
+        //dequeue();
+        //dequeue();
+        obj.display();
+        
+    }
+}
+
+
+5.  package DSA;
+class Node2
+{
+    int data;
+     Node2 next;
+    Node2(int data)
+    {
+        this.data = data;
+        this.next=null;
+    }
+}
+class LinkedList3
+{ 
+     Node2 head;
+     int length;
+    LinkedList3()
+    {
+        head=null;
+        length=0;
+    }
+    void insert_Beg(int x)
+    {
+        Node2 obj = new Node2(x);
+        if(head==null)
+        {
+            head=obj;
+        }else
+        {
+            obj.next = head;
+            head=obj;
+        }
+    }
+    void insert_middle(int x,int pos)
+    {
+        int i=1;
+        Node2 obj = new Node2(x);
+        Node2 temp=head;
+        Node2 xyz=temp;
+        while(temp.next!=null)
+        {   
+              if(i==pos-1)
+               {
+                  
+                   break;
+               }
+                temp=temp.next;
+                  i++;
+        }
+                obj.next=temp.next;
+                temp.next=obj;
+        
+    }
+    void displayforward()
+    {
+         Node2 n = head;
+        while(n.next != null) 
+        {
+            System.out.print(n.data + " -> ");
+           n = n.next;
+        }
+           System.out.print(n.data + " ");
+    }
+    public static void main(String[]args)
+    {
+        LinkedList3 sll=new LinkedList3();
+        sll.insert_Beg(20);
+        sll.insert_Beg(25);
+         sll.insert_Beg(60);
+         sll.insert_Beg(70);
+        sll.insert_middle(50,3);
+        sll.displayforward();
+    }
+}
+
+
+6.package DSA;
+class Node4
+{
+    int data;
+    Node4 next;
+    Node4(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+}
+class CircularLinkedList
+{
+    Node4 head;
+    int length;
+    CircularLinkedList()
+    {
+        head=null;
+        length=0;
+    }
+    void  insert_beg(int x)
+    {
+        Node4 newnode=new Node4(x);
+       // Node4 temp = head;
+        if(head==null)
+        {
+           
+          //  newnode.data=x;
+            head=newnode;
+             newnode.next=head;
+        }
+        else
+        {
+            Node4 temp1=head;
+            newnode.next=temp1;
+            while(temp1.next!=head)
+            {
+                temp1=temp1.next;
+            }
+              //  newnode.next=head.next;
+              temp1.next=newnode;
+                head=newnode;
+        }
+        length++;
+    }
+    void display()
+    {
+        Node4 temp= head;
+        while(temp.next!=head)
+        {
+            System.out.print(temp.data+"->");
+            temp=temp.next;
+        }
+        System.out.print(temp.data); 
+         System.out.println("length of link list:"+length);
+    }
+    public static void main(String[]args)
+    {
+        CircularLinkedList cll = new CircularLinkedList();
+           cll.insert_beg(10);
+          cll.insert_beg(20);
+           cll.insert_beg(30);
+           cll.insert_beg(40);
+           cll.display();
+    }
+}
+
