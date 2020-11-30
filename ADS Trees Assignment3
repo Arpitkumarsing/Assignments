@@ -1,0 +1,499 @@
+1.class Node 
+{ 
+    int key; 
+    Node left, right; 
+  
+    public Node(int item) 
+    { 
+        key = item; 
+        left = right = null; 
+    } 
+} 
+  
+class BinaryTree 
+{ 
+    
+    Node root; 
+    BinaryTree(int key) 
+    { 
+        root = new Node(key); 
+    } 
+  
+    BinaryTree() 
+    { 
+        root = null; 
+    } 
+  
+    public static void main(String[] args) 
+    { 
+        BinaryTree tree = new BinaryTree(); 
+  
+        tree.root = new Node(1); 
+  
+        tree.root.left = new Node(2); 
+        tree.root.right = new Node(3); 
+  
+  
+  
+        tree.root.left.left = new Node(4); 
+        
+    } 
+} 
+
+
+2.class Node 
+{ 
+    int key; 
+    Node left, right; 
+  
+    public Node(int item) 
+    { 
+        key = item; 
+        left = right = null; 
+    } 
+} 
+  
+class BinaryTree 
+{ 
+    Node root; 
+  
+    BinaryTree() 
+    { 
+        root = null; 
+    } 
+  
+    void printPostorder(Node node) 
+    { 
+        if (node == null) 
+            return; 
+        printPostorder(node.left); 
+  
+        printPostorder(node.right); 
+  
+        System.out.print(node.key + " "); 
+    } 
+    void printInorder(Node node) 
+    { 
+        if (node == null) 
+            return; 
+        printInorder(node.left); 
+        System.out.print(node.key + " "); 
+        printInorder(node.right); 
+    } 
+    void printPreorder(Node node) 
+    { 
+        if (node == null) 
+            return; 
+        System.out.print(node.key + " "); 
+        printPreorder(node.left); 
+        printPreorder(node.right); 
+    } 
+   
+    void printPostorder()  
+     {    
+         printPostorder(root);  
+      } 
+    void printInorder()    {     printInorder(root);   } 
+    void printPreorder()   {     printPreorder(root);  } 
+  
+    public static void main(String[] args) 
+    { 
+        BinaryTree tree = new BinaryTree(); 
+        tree.root = new Node(1); 
+        tree.root.left = new Node(2); 
+        tree.root.right = new Node(3); 
+        tree.root.left.left = new Node(4); 
+        tree.root.left.right = new Node(5); 
+  
+        System.out.println("Preorder traversal of binary tree is "); 
+        tree.printPreorder(); 
+  
+        System.out.println("\nInorder traversal of binary tree is "); 
+        tree.printInorder(); 
+  
+        System.out.println("\nPostorder traversal of binary tree is "); 
+        tree.printPostorder(); 
+    } 
+}
+
+3.import java.util.LinkedList;
+import java.util.Queue;
+public class Tree1 {
+    left child and a pointer to right child */
+    static class Node {
+        int key;
+        Node left, right;
+        Node(int key)
+        {
+            this.key = key;
+            left = null;
+            right = null;
+        }
+    }
+    static Node root;
+    static Node temp = root;
+    static void inorder(Node temp)
+    {
+        if (temp == null)
+            return;
+ 
+        inorder(temp.left);
+        System.out.print(temp.key + " ");
+        inorder(temp.right);
+    }
+    static void insert(Node temp, int key)
+    {
+ 
+        if (temp == null) {
+            root = new Node(key);
+            return;
+        }
+        Queue<Node> q = new LinkedList<Node>();
+        q.add(temp);
+        while (!q.isEmpty()) {
+            temp = q.peek();
+            q.remove();
+ 
+            if (temp.left == null) {
+                temp.left = new Node(key);
+                break;
+            }
+            else
+                q.add(temp.left);
+ 
+            if (temp.right == null) {
+                temp.right = new Node(key);
+                break;
+            }
+            else
+                q.add(temp.right);
+        }
+    }
+    public static void main(String args[])
+    {
+        root = new Node(10);
+        root.left = new Node(11);
+        root.left.left = new Node(7);
+        root.right = new Node(9);
+        root.right.left = new Node(15);
+        root.right.right = new Node(8);
+ 
+        System.out.print(
+            "Inorder traversal before insertion:");
+        inorder(root);
+ 
+        int key = 12;
+        insert(root, key);
+ 
+        System.out.print(
+            "\nInorder traversal after insertion:");
+        inorder(root);
+    }
+}
+
+4.import java.util.LinkedList;  
+import java.util.Queue;  
+  
+class Tree
+{        
+static class Node  
+{  
+    int key;  
+    Node left, right;  
+      
+     
+    Node(int key) 
+    {  
+        this.key = key;  
+        left = null;  
+        right = null;  
+    }  
+}  
+  
+static Node root;  
+static Node temp = root;   
+static void inorder(Node temp)  
+{  
+    if (temp == null)  
+        return;  
+  
+    inorder(temp.left);  
+    System.out.print(temp.key + " ");  
+    inorder(temp.right);  
+}  
+static void deleteDeepest(Node root, 
+                          Node delNode) 
+{ 
+    Queue<Node> q = new LinkedList<Node>();  
+    q.add(root); 
+      
+    Node temp = null; 
+    while (!q.isEmpty()) 
+    {  
+        temp = q.peek();  
+        q.remove(); 
+          
+        if (temp == delNode) 
+        {  
+            temp = null;  
+            return;  
+              
+        }  
+        if (temp.right!=null) 
+        {  
+            if (temp.right == delNode) 
+            {  
+                temp.right = null;  
+                return;  
+        }  
+        else
+            q.add(temp.right);  
+    }  
+  
+    if (temp.left != null)  
+    {  
+        if (temp.left == delNode) 
+        {  
+            temp.left = null;  
+            return;  
+        }  
+        else
+            q.add(temp.left);  
+    }  
+}  
+} 
+static void delete(Node root, int key) 
+{ 
+    if (root == null)  
+        return;  
+          
+    if (root.left == null &&  
+       root.right == null) 
+    {  
+        if (root.key == key)  
+            return;  
+        else
+            return;  
+    } 
+      
+    Queue<Node> q = new LinkedList<Node>();  
+    q.add(root); 
+    Node temp = null, keyNode = null; 
+    while (!q.isEmpty()) 
+    {  
+        temp = q.peek();  
+        q.remove();  
+          
+        if (temp.key == key)  
+            keyNode = temp;  
+  
+        if (temp.left != null)  
+            q.add(temp.left);  
+  
+        if (temp.right != null)  
+            q.add(temp.right);  
+    }  
+  
+    if (keyNode != null) 
+    {  
+        int x = temp.key;  
+        deleteDeepest(root, temp);  
+        keyNode.key = x;  
+    }  
+}  
+public static void main(String args[])  
+{  
+    root = new Node(10);  
+    root.left = new Node(11);  
+    root.left.left = new Node(7); 
+    root.left.right = new Node(12); 
+    root.right = new Node(9);  
+    root.right.left = new Node(15);  
+    root.right.right = new Node(8);  
+  
+    System.out.print("Inorder traversal " + 
+                     "before deletion:");  
+    inorder(root);  
+  
+    int key = 11;  
+    delete(root, key);  
+  
+    System.out.print("\nInorder traversal " + 
+                     "after deletion:");  
+    inorder(root);  
+}  
+}
+
+
+5.  class BinarySearchTree
+   { 
+    class Node  
+    { 
+        int key; 
+        Node left, right; 
+  
+        public Node(int item) 
+        { 
+            key = item; 
+            left = right = null; 
+        } 
+    } 
+    Node root; 
+    BinarySearchTree()  
+    {  
+         root = null;  
+    } 
+    void insert(int key)  
+    {  
+         root = insertRec(root, key);  
+    } 
+    Node insertRec(Node root, int key) 
+    { 
+        if (root == null)  
+        { 
+            root = new Node(key); 
+            return root; 
+        } 
+        if (key < root.key) 
+            root.left = insertRec(root.left, key); 
+        else if (key > root.key) 
+            root.right = insertRec(root.right, key); 
+        return root; 
+    } 
+    void inorder()  
+    {  
+         inorderRec(root);  
+    } 
+    void inorderRec(Node root) 
+    { 
+        if (root != null) { 
+            inorderRec(root.left); 
+            System.out.println(root.key); 
+            inorderRec(root.right); 
+        } 
+    }  
+    public static void main(String[] args) 
+    { 
+        BinarySearchTree tree = new BinarySearchTree(); 
+        tree.insert(50); 
+        tree.insert(30); 
+        tree.insert(20); 
+        tree.insert(40); 
+        tree.insert(70); 
+        tree.insert(60); 
+        tree.insert(80); 
+        tree.inorder(); 
+    } 
+} 
+
+6.class BinarySearchTree {
+    class Node {
+        int key;
+        Node left, right;
+ 
+        public Node(int item)
+        {
+            key = item;
+            left = right = null;
+        }
+    }
+    Node root;
+
+    BinarySearchTree() { root = null; }
+ 
+    void deleteKey(int key) { 
+              root = deleteRec(root, key); 
+      }
+
+    Node deleteRec(Node root, int key)
+    {
+        if (root == null)
+            return root;
+        if (key < root.key)
+            root.left = deleteRec(root.left, key);
+        else if (key > root.key)
+            root.right = deleteRec(root.right, key);
+        else {
+            if (root.left == null)
+                return root.right;
+            else if (root.right == null)
+                return root.left;
+            root.key = minValue(root.right);
+            root.right = deleteRec(root.right, root.key);
+        }
+ 
+        return root;
+    }
+ 
+    int minValue(Node root)
+    {
+        int minv = root.key;
+        while (root.left != null) 
+        {
+            minv = root.left.key;
+            root = root.left;
+        }
+        return minv;
+    }
+    void insert(int key) { root = insertRec(root, key); }
+ 
+    Node insertRec(Node root, int key)
+    {
+        if (root == null) {
+            root = new Node(key);
+            return root;
+        }
+        if (key < root.key)
+            root.left = insertRec(root.left, key);
+        else if (key > root.key)
+            root.right = insertRec(root.right, key);
+        return root;
+    }
+ 
+   
+    void inorder() { inorderRec(root); }
+ 
+    void inorderRec(Node root)
+    {
+        if (root != null) {
+            inorderRec(root.left);
+            System.out.print(root.key + " ");
+            inorderRec(root.right);
+        }
+    }
+ 
+    
+    public static void main(String[] args)
+    {
+        BinarySearchTree tree = new BinarySearchTree();
+        tree.insert(50);
+        tree.insert(30);
+        tree.insert(20);
+        tree.insert(40);
+        tree.insert(70);
+        tree.insert(60);
+        tree.insert(80);
+ 
+        System.out.println(
+            "Inorder traversal of the given tree");
+        tree.inorder();
+ 
+        System.out.println("\nDelete 20");
+        tree.deleteKey(20);
+        System.out.println(
+            "Inorder traversal of the modified tree");
+        tree.inorder();
+ 
+        System.out.println("\nDelete 30");
+        tree.deleteKey(30);
+        System.out.println(
+            "Inorder traversal of the modified tree");
+        tree.inorder();
+ 
+        System.out.println("\nDelete 50");
+        tree.deleteKey(50);
+        System.out.println(
+            "Inorder traversal of the modified tree");
+        tree.inorder();
+    }
+}
