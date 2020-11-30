@@ -1,0 +1,98 @@
+1.package DSAAssignment;
+class factorial1
+{
+	public int fact(int n)
+	{
+		if(n==1)
+		{
+			return 1;
+		}else
+		{
+			return n * fact(n-1);
+		}
+	}
+}
+class factorial
+{
+	public static void main(String[]args)
+	{
+		factorial1 obj = new factorial1();
+		int q= obj.fact(5);
+		System.out.println(q);
+		
+	}
+}
+
+
+2. package DSAAssignment;
+
+class fibonaaci
+{ 
+	    static int fib(int n) 
+	    { 
+	    if (n <= 1) 
+	       return n; 
+	    return fib(n-1) + fib(n-2); 
+	    } 
+	       
+	    public static void main (String args[]) 
+	    { 
+	    int n = 5; 
+	    System.out.println(fib(n)); 
+	    } 
+} 
+
+
+
+3.package DSAAssignment;
+
+class generic {
+	public <T extends Comparable<T>> T f(T x, T y, T z) {
+		T _ret;
+		if (x.compareTo(y) > 0 && x.compareTo(z) > 0) {
+			_ret = x;
+			System.out.println("number is x is large:" + x);
+		} else if (y.compareTo(x) > 0 && y.compareTo(z) > 0 ) {
+			_ret = y;
+			System.out.println("number y is large:" + y);
+		} else {
+			_ret = z;
+			System.out.println("number z is large:" + z);
+		}
+		return _ret;
+	}
+}
+
+public class genericclass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		generic obj = new generic();
+		obj.f("20", "30", "40");
+
+	}
+
+}
+
+
+4.class GFG 
+  { 
+     
+    static void towerOfHanoi(int n, char from_rod, char to_rod, char aux_rod) 
+    { 
+        if (n == 1) 
+        { 
+            System.out.println("Move disk 1 from rod " +  from_rod + " to rod " + to_rod); 
+            return; 
+        } 
+        towerOfHanoi(n-1, from_rod, aux_rod, to_rod); 
+        System.out.println("Move disk " + n + " from rod " +  from_rod + " to rod " + to_rod); 
+        towerOfHanoi(n-1, aux_rod, to_rod, from_rod); 
+    } 
+      
+    public static void main(String args[]) 
+    { 
+        int n = 4; // Number of disks 
+        towerOfHanoi(n, \'A\', \'C\', \'B\');  
+    }
+  } 
