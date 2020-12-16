@@ -1,0 +1,188 @@
+
+assignment 1 & 2
+(1)
+show databases
+ use assignment;
+ create table member1
+ (
+ Member_Id	int(5)	Unique key,
+Member_Name	Varchar(30),
+Member_address	Varchar(50)	,
+Acc_Open_Date	Date,
+Membership_type	Varchar(20)	,
+Penalty_Amount	int(7)	
+);
+
+desc member1;
+
+(2)..
+show databases
+use assignment;
+
+create table book
+(
+Book_No	int(6),
+Book_Name VarChar(30),
+Author_name	Varchar(30),
+Cost	int(7),
+Category	Char(10)
+
+);
+desc book;
+
+(3)
+
+show databases
+use assignment;
+
+create table book1
+(
+Lib_Issue_Id	int(10),
+Book_No	int(6),
+Member_Id	int(5),
+Issue_Date	Date,
+Return_date	Date
+
+);
+desc book;
+ALTER TABLE book1 DROP member_id;
+(4)
+use assignment;
+create table memberss
+(
+Member_ID int(5),
+Member_Name	 varchar(50),
+Member_Address varchar(50),
+Acc_Open_Date	Date,
+Membership_type varchar(51)
+);
+desc memberss;
+insert into memberss(Member_ID,Member_name,Member_Address,Acc_Open_Date,Membership_type)
+values(1,'Richa Sharma','Pune','2010-12-05',	'Lifetime');
+insert into memberss(Member_ID,Member_name,Member_Address,Acc_Open_Date,Membership_type)
+values(2,'Garima Sen',CURDATE(),'Annual');
+select *from memberss;
+(5)
+use assignment
+create table Employee11
+(
+empid int(5),
+emp_name varchar(50),
+dept_id	 int,
+salary int(11),
+manager_acc int(5)
+);
+insert into Employee11(empid,emp_name,dept_id,salary,manager_acc)
+values(1,'Arun',1,8000,4);
+insert into Employee11(empid,emp_name,dept_id,salary,manager_acc)
+values(2,'kiran',5,	7000,1);	
+insert into Employee11(empid,emp_name,dept_id,salary,manager_acc)
+values(3,'Scott',1,3000,7);
+insert into Employee11(empid,emp_name,dept_id,salary,manager_acc)
+values(4,'Max',2,9000,5);
+insert into Employee11(empid,emp_name,dept_id,salary,manager_acc)
+values(5,'Jack',2,8000,4);
+insert into Employee11(empid,emp_name,dept_id,salary,manager_acc)
+values(6,'King',3,6000,1);
+select *from employee11
+TRUNCATE employee11;
+desc employee11;
+ALTER table Employee11 ADD PRIMARY KEY(empid);
+
+
+create table Department
+(
+dept_id	int NOT NULL PRIMARY KEY,
+dept_name varchar(50)
+CONSTRAINT fk_key FOREIGN KEY(dept_id) REFERENCES Employee11(dept_id)
+);
+
+
+
+
+test,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1..
+show databases
+use arpit;
+create table SUPERHERO
+(
+ID Integer(100),
+NAME varchar(99),
+LATTITUDE Float,
+LONGITUDE Float
+);
+desc SUPERHERO
+insert into  SUPERHERO (ID,NAME,LATTITUDE,LONGITUDE)
+values(1,'Batman',50.0,85.0);
+insert into  SUPERHERO (ID,NAME,LATTITUDE,LONGITUDE)
+values(2,'Spiderman',65.0,65.0)
+insert into  SUPERHERO (ID,NAME,LATTITUDE,LONGITUDE)
+values(3,'Thor',45.0,30.0)
+insert into  SUPERHERO (ID,NAME,LATTITUDE,LONGITUDE)
+values(4,'Deadpool',25.0,69.0)
+insert into  SUPERHERO (ID,NAME,LATTITUDE,LONGITUDE)
+values(5,'Hulk',30.0,20.0)
+insert into  SUPERHERO (ID,NAME,LATTITUDE,LONGITUDE)
+values(6,'Captain America',70.0,75.0)
+insert into  SUPERHERO (ID,NAME,LATTITUDE,LONGITUDE)
+values(7,'Sumerman',85.0,45.0)
+
+select *from SUPERHERO
+select distinct name from SUPERHERO where name like'B%'or name like'Th%'or name like'Hulk';
+
+
+
+ADD two number by STORE procedure...................................................
+
+DELIMITER $$$
+CREATE PROCEDURE sp_GettSum(IN num1 int, IN num2 int,out result int)
+begin
+set result=num1+num2;
+end $$$
+call sp_GettSum(20,10,@Sum);
+select@sum;
+
+
+
+
+
+pass by values ...........................................................
+
+DELIMITER $$
+create procedure sp_Update_Number(num int)
+BEGIN
+SET num=num+1;
+select num;
+END $$
+
+set @numb=10;
+call sp_Update_Number(@numb);  // 11
+select @numb; // not change 10
+
+
+procedure........................................
+
+1)
+
+DELIMITER $$$
+CREATE PROCEDURE sp_GeSum(IN num1 int, IN num2 int)
+begin
+/*declare result int;*/
+select num1+num2;
+end $$$
+call sp_GeSum(20,10);
+
+
+
+
+
+update values...................................
+
+DELIMITER $$
+create procedure sp_Update_Number1(OUT result int)
+BEGIN
+set result=10;
+END $$
+set @numb=5;
+call sp_Update_Number1(@numb);
+select @numb;
