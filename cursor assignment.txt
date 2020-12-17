@@ -1,0 +1,124 @@
+cursor assignment;|
+
+
+ q 1.
+DELIMITER $$
+CREATE PROCEDURE cur_ex()
+BEGIN
+DECLARE sal_point int;
+DECLARE c_emp int;
+DECLARE finished int default 0;
+DECLARE sa_cur CURSOR FOR SELECT EMPNO,SAL FROM EMPL WHERE JOB='Analyst';
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
+OPEN sa_cur;
+get_sal : LOOP
+          FETCH sa_cur INTO c_emp,sal_point;
+       IF finished = 1
+       THEN
+       LEAVE get_sal;
+       END IF;
+        SELECT c_emp,sal_point FROM EMPL;
+       END LOOP get_sal;
+       	CLOSE sa_cur;
+        END $$
+        
+        CALL cur_ex();
+==================================================================================================================================================================
+q 2.
+   DELIMITER $$
+CREATE PROCEDURE cur_e()
+BEGIN
+DECLARE sal_point int;
+DECLARE c_emp int;
+DECLARE e_nam varchar(20);
+DECLARE finished int default 0;
+DECLARE sa_cur CURSOR FOR SELECT EMPNO,ENAME,SAL  FROM EMPL ORDER BY SAL DESC LIMIT  5;
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
+OPEN sa_cur;
+get_sal : LOOP
+          FETCH sa_cur INTO c_emp,e_nam,sal_point;
+       IF finished = 1
+       THEN
+       LEAVE get_sal;
+       END IF;
+        SELECT c_emp,e_nam,sal_point FROM EMPL;
+       END LOOP get_sal;
+       	CLOSE sa_cur;
+        END $$
+        
+        CALL cur_e();
+=======================================================================================================================================================================
+ q 3.
+DELIMITER $$
+CREATE PROCEDURE cur_ee()
+BEGIN
+
+DECLARE e_nam varchar(20);
+DECLARE finished int default 0;
+DECLARE sa_cur CURSOR FOR SELECT concat(ENAME,JOB) FROM EMPLO;
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
+OPEN sa_cur;
+get_sal : LOOP
+          FETCH sa_cur INTO e_nam;
+       IF finished = 1
+       THEN
+       LEAVE get_sal;
+       END IF;
+        SELECT e_nam FROM EMPL WHERE ENAME='Pooja';
+       END LOOP get_sal;
+       	CLOSE sa_cur;
+        END $$ 
+        
+        CALL cur_ee()
+==========================================================================================================================================================================
+q 4.
+DELIMITER $$
+CREATE PROCEDURE cur_eee()
+BEGIN
+DECLARE e_no int;
+DECLARE e_nam varchar(20);
+DECLARE e_job varchar(20);
+DECLARE e_mg int;
+DECLARE e_date DATE;
+DECLARE e_sal int;
+DECLARE e_d int;
+DECLARE finished int default 0;
+DECLARE sa_cur CURSOR FOR SELECT *FROM EMPLO WHERE ENAME='Manish';
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
+OPEN sa_cur;
+get_sal : LOOP
+          FETCH sa_cur INTO e_no,e_nam,e_job,e_mg,e_date,e_sal,e_d;
+       IF finished = 1
+       THEN
+       LEAVE get_sal;
+       END IF;
+        SELECT e_no,e_nam,e_job,e_mg,e_date,e_sal,e_d FROM EMPLO;
+       END LOOP get_sal;
+       	CLOSE sa_cur;
+        END $$ 
+ DROP PROCEDURE cur_eee;
+        
+        CALL cur_eee();
+========================================================================================================================================================================
+q 5.
+ DELIMITER $$
+CREATE PROCEDURE DELEMPNO_DATA()
+BEGIN
+DECLARE LLEMPNO numeric(4) DEFAULT 0;
+DECLARE ERR INT  DEFAULT 0;
+
+DECLARE DELEMPNO CURSOR FOR SELECT EMPNO FROM EMPLO WHERE SAL<10000;
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET ERR=1;
+
+OPEN DELEMPNO;
+     TEST:LOOP
+        FETCH DELEMPNO  INTO LLEMPNO;
+        IF(ERR=1) THEN 
+           LEAVE TEST;
+		END IF;
+       DELETE FROM EMPLO WHERE EMPNO=LLEMPNO;
+    END LOOP TEST;
+CLOSE DELEMPNO;
+END $$
+CALL DELEMPNO_DATA();  
+========================================================================================================================================================================
