@@ -1,0 +1,54 @@
+TRIGGER ASSIGNMENT	
+=================
+1.
+ 
+ DELIMITER $$
+CREATE TRIGGER BEFO_INSTs BEFORE INSERT ON Ord_dtl
+FOR EACH ROW
+BEGIN
+UPDATE Prod_master
+SET Booked_qty=Booked_qty+new.Qty WHERE Prod_cd=new.Prod_cd_cd;
+END$$
+=====================================================================================================================================
+2.
+DELIMITER $$
+CREATE TRIGGER BEF_DEL BEFORE DELETE ON Ord_dtl
+FOR EACH ROW
+BEGIN
+UPDATE Prod_master
+SET Booked_qty=Booked_qty-OLD.Qty WHERE Prod_cd=old.Prod_cd_cd;
+END $$
+=====================================================================================================================================
+3.
+DELIMITER $$
+CREATE TRIGGER ADD_UPD_EMP_SAL BEFORE INSERT ON Employee
+FOR EACH ROW
+BEGIN
+UPDATE DEPARTMENT SET totalsal=totalsal+NEW.salary where dept_id=NEW.dept_id;
+END $$
+insert into Employee values (7, "Scott", 1,3000,1);
+======================================================================================================================================
+4.
+
+DELIMITER $$
+CREATE TRIGGER RMV_EMP_UPD_SAL BEFORE DELETE ON EMPLOYEE
+FOR EACH ROW
+BEGIN
+UPDATE DEPARTMENT SET totalsal=totalsal-old.salary where dept_id=OLD.dept_id;
+END $$
+DELETE FROM EMPLOYEE WHERE empid=7;
+SELECT  * FROM DEPARTMENT;
+SELECT  * FROM employee;
+
+DELIMITER $$
+CREATE TRIGGER ADD_UPD_EMP_SAL BEFORE INSERT ON Employee
+FOR EACH ROW
+BEGIN
+UPDATE DEPARTMENT SET totalsal=totalsal+NEW.salary where dept_id=NEW.dept_id;
+END $$
+insert into Employee values (7, "Scott", 1,3000,1);
+SELECT  * FROM DEPARTMENT;
+SELECT  * FROM employee;
+
+=======================================================================================================================================
+
