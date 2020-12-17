@@ -1,0 +1,101 @@
+1.
+DELIMITER %%
+CREATE PROCEDURE proc10(IN x int,IN y int)
+BEGIN
+SELECT x/y;
+SELECT x+y;
+SELECT x-y;
+SELECT x*y;
+END %%
+CALL proc10(20,10);
+=========================================================================================================================
+2.
+DELIMITER $$
+CREATE PROCEDURE proc9(INOUT x varchar(20))
+BEGIN
+DECLARE str  varchar(20);
+SET str=x;
+IF str=''|| isnull(STR)
+THEN
+SELECT 'NO SUCH STRING';
+else
+SELECT REVERSE(STR)INTO x;
+END IF;
+END$$
+
+SET @a='ARPIT';
+CALL proc9(@a);
+SELECT @a;
+===========================================================================================================================
+3.
+CALL prop()
+SELECT * FROM EMPL;
+DELIMITER !!
+CREATE PROCEDURE proc7()
+BEGIN
+SELECT EMPNO,ENAME,SAL FROM EMPL ORDER BY  SAL DESC LIMIT 5;
+END !!
+CALL proc7();
+=============================================================================================================================
+4.
+DELIMITER {{ 
+CREATE PROCEDURE prop()
+BEGIN
+CREATE TABLE emp_test(
+e_id int(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+e_name varchar (10),
+e_joining_date DATE 
+ );
+END {{
+CALL prop()
+==============================================================================================================================
+5.
+DELIMITER $$
+CREATE PROCEDURE procs(IN x int,IN y varchar(20),IN z varchar(25))
+BEGIN
+INSERT INTO DEPT(dno,dname,area)
+VALUES(x,y,z);
+END $$
+
+
+CALL procs(60,'Education','Pune');
+
+SELECT * FROM DEPT;
+================================================================================================================================
+6.
+DELIMITER !!
+CREATE PROCEDURE proc()
+BEGIN
+DECLARE nums int;
+SET nums=2;
+SELECT nums;
+SELECT POW(nums,2);
+SELECT POW(nums,3);
+END !!
+
+CALL PROC();
+=================================================================================================================================
+8.
+
+DELIMITER $$
+CREATE PROCEDURE proc2(INOUT x varchar(20))
+BEGIN
+SELECT ENAME INTO x FROM EMPL WHERE JOB=x;
+END $$
+Set @x="MANAGER";
+Call proc2(@x);
+Select @x;
+==============================================================================================================================
+7.
+DELIMITER $$
+CREATE PROCEDURE proc()
+BEGIN
+DECLARE nums int;
+SET nums=2;
+SELECT nums;
+SELECT POW(nums,2);
+SELECT POW(nums,3);
+END $$
+==================================================================================================================================
+
+
