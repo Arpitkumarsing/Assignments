@@ -1,0 +1,107 @@
+FUNCTIONS ASSIGNMENT
+
+1.DELIMITER $$
+CREATE FUNCTION FAC(  NUM INT) RETURNS INT
+BEGIN
+DECLARE v int;
+DECLARE c int;
+SET c=1;
+SET v=1;
+WHILE(v<=NUM)
+DO
+ SET c= NUM*v;
+SET v=v+1;
+RETURN c;
+END WHILE;
+END $$
+
+SELECT FAC(5);
+===========================================================================================================================
+2.
+
+
+delimiter $$
+CREATE FUNCTION PRIME ( NUM INT) RETURNS VARCHAR(20)
+BEGIN
+DECLARE I INT;
+SET I=2;
+     WHILE (I<=NUM/2) DO
+           IF(NUM%I=0) THEN
+             RETURN "NOT PRIME";
+           ELSE
+            SET I=I+1;
+		  END IF;
+	 END WHILE;
+  RETURN "PRIME";
+END $$  
+
+SELECT PRIME(18);
+=====================================================================================================================================
+3.
+DELIMITER $$
+CREATE FUNCTION fu( NUM int) RETURNS VARCHAR(200)
+BEGIN 
+
+
+RETURN concat( NUM ,'INCHES', ROUND(NUM/36), 'YARDS', ROUND(NUM/12), 'FOOT' );
+END $$
+Drop FUNCTION fu;
+SELECT fu(45);
+===================================================================================================================================
+4.
+ DELIMITER $$
+ CREATE FUNCTION FUF( DEPT INT) RETURNS VARCHAR(20)
+ BEGIN
+ UPDATE  EMPL
+ SET SAL=SAL+(0.10* SAL)
+ WHERE DEPTNO=DEPT;
+ RETURN 'UPDATED';
+ END $$
+ 
+ SELECT FUF(10)
+==================================================================================================================================
+5.
+ DELIMITER $$
+ CREATE FUNCTION FUFU( str varchar(20)) RETURNS VARCHAR(20) 
+ BEGIN
+ IF(str='' || ISNULL(str))
+ THEN
+SET  str='No SUCH STRING';
+ ELSE
+return reverse(str);
+ END IF;
+ END$$
+=====================================================================================================================================
+6.
+ DELIMITER $$
+ CREATE PROCEDURE USER_QUERY_EMP (IN p_myeno  INT, OUT p_myjob  varchar(20),OUT p_mysal int)
+ BEGIN
+ DECLARE NO INT;
+SET NO = (SELECT COUNT(*) FROM EMPL WHERE EMPNO=p_myeno );
+IF NO=0 THEN 
+SELECT 'employee not exists';
+ELSE
+ SELECT JOB,SAL INTO p_myjob, p_mysal from EMPL WHERE EMPNO =p_myeno;
+ END IF;
+ END $$
+ 
+CALL USER_QUERY_EMP(11,@j,@s);
+SELECT @j;
+SELECT @s;
+==========================================================================================================================================
+7.
+delimiter $$
+ create function USER_ANNUAL_COMP (empn int ,comp int ) returns int
+ begin
+ declare val int;
+ set val=(select sal from emp where empno=empn);
+ return (val+comp)*12;
+ end;$$
+ 
+ select  USER_ANNUAL_COMP(1004,20);
+====================================================================================================================================
+
+
+
+
+
