@@ -1,0 +1,121 @@
+        
+Js_Assignment 1
+
+
+
+=============================================================================================
+1)
+
+function sum(x,y)
+{
+  return x+y;
+  
+}
+sum(1,2);
+sum(2,1);
+================================================================================================
+2)
+
+var b={
+  fName:'Arpit',
+  lName:'Kumar',
+  age:24,
+  gender:'male',
+  
+}
+b.fName
+==================================================================================================
+3)
+
+
+var array=[10,"arpit","kumar",true,null];
+for(var a=0;a<=4;a++)
+  {
+    console.log(array[a]);
+  }
+
+
+****)
+var array=[10,20,];
+var sum=0;
+for(var a=0;a<=4;a++)
+  {
+   sum=sum+array[a];
+    console.log(sum);
+  }
+
+
+=======================================================================================================
+4)
+var a=Math.round(0.60);
+console.log(a);
+=======================================================================================================
+
+5)
+
+var a=[1,2,4];
+sum=0;
+a.forEach(function(value){
+  sum=sum+value;
+  console.log(sum);
+});
+=======================================================================================================
+6
+function cToF(celsius) 
+{
+  var cTemp = celsius;
+  var cToFahr = cTemp * 9 / 5 + 32;
+  var message = cTemp+'\xB0C is ' + cToFahr + ' \xB0F.';
+    console.log(message);
+}
+
+function fToC(fahrenheit) 
+{
+  var fTemp = fahrenheit;
+  var fToCel = (fTemp - 32) * 5 / 9;
+  var message = fTemp+'\xB0F is ' + fToCel + '\xB0C.';
+    console.log(message);
+} 
+cToF(60);
+fToC(45);
+=============================================================================================================
+7)
+
+
+function factorial(x) 
+{ 
+
+  if (x === 0)
+ {
+    return 1;
+ }
+  return x * factorial(x-1);
+         
+}
+console.log(factorial(5));
+==============================================================================================================
+
+8)
+
+function amountTocoins(amount, coins) 
+{
+ if (amount === 0) 
+  {
+     return [];
+   } 
+ else
+   {
+     if (amount >= coins[0]) 
+       {
+        left = (amount - coins[0]);
+        return [coins[0]].concat( amountTocoins(left, coins) );
+        } 
+      else
+        {
+         coins.shift();
+         return amountTocoins(amount, coins);
+        }
+    }
+} 
+console.log(amountTocoins(46, [25, 10, 5, 2,1]));
+====================================================================================================================
