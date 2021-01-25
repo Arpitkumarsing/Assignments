@@ -1,0 +1,255 @@
+*
+
+console.log("1");
+setTimeout(()=>console.log(2),0);
+Promise.resolve().then(()=>console.log("3"));
+
+
+output:132
+//============================================================================
+//*/
+/*
+console.log("1")
+const task=()=>{
+    console.log("After 5 second");
+};
+setTimeout(task,5000);
+//after 2 secomnd
+setTimeout(()=>{
+    console.log("After 2 second");
+},2000);
+console.log("3");
+
+
+output:1
+3
+After 2 second
+After 5 second
+==========================================================================================
+*/
+/*
+let p=new Promise((resolve,reject)=>{
+    resolve();
+
+})
+p.then(()=>console.log("promise, resolve"));
+
+output:promise, resolve
+===========================================================================================
+*/
+/*
+let p=new Promise((resolve,reject)=>{
+    reject();
+
+});
+console.log(p);
+p.catch(()=>console.log("promise rejected"));
+
+output:promise, resolve
+=============================================================================================
+*/
+//let p=new Promise((resolve,reject)=>{resolve(10);});
+//===============================================================================================
+
+/*
+function iampromiseFunction(p1){
+    return new Promise((resolve,reject)=>{if(p1==1)
+    {
+        resolve("success");
+    }
+    else{
+        reject("error");
+    }
+    });
+
+}
+let p=iampromiseFunction(1);
+p.then((result)=>console.log(result)).catch((error)=>{console.log(error)});
+
+
+output:::success
+===================================================================================
+*/
+/*
+function iamaldoFunction(){
+    return new Promise((resolve,reject)=>{})
+}
+*/
+//       OOOOOOOORRRRRRRRR
+/*
+async function iamFunction(){
+    //logic
+
+}
+let p=iamFunction();
+console.log(p);
+
+output:::Promise { undefined }
+//=======================================================================================
+//*/
+
+// promise is implicit
+/*
+async function helloasync(){
+    //logic
+
+}return "hello";
+async function helloasync(){
+    return "world";
+}
+helloasync();
+helloAsync().then((res)=>{
+    console.log(res);
+});
+helloAsync().then((res)=>{
+    console.log(res);
+});
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+function add(n1,n2){
+    return n1+n2;
+
+
+}
+
+
+function main(){
+    let output=add(10,20);
+    console.log("output",output);
+}
+main();
+
+
+function add(n1,n2){
+    return n1+n2;
+}
+async function main(){
+     let output=await add(10,20);
+    console.log("output",output)
+}main();
+
+
+output 30
+================================================================================================
+*/
+                                        // ASYNCHRONOUS CALCULATOR
+
+async function add(n1,n2){
+    return n1+n2;
+}
+async function subtract(n1,n2){
+    return n1-n2;
+}
+async function mult(n1,n2){
+    return n1*n2;
+}
+async function div(n1,n2){
+    return n1/n2;
+
+
+}
+
+ async function main(){
+    let output=await add(10,20);
+    console.log("add",output);
+    let soutput=await subtract(100,50);
+    console.log("Difference",soutput);
+
+    let moutput=await mult(10,20);
+    console.log("mul",moutput);
+
+    let doutput=await div(10,20);
+    console.log("div",doutput);
+}
+main();
+
+//=======================================================================================
+
+ //                                    doubt
+
+/*
+function add(n1,n2){
+    return new Promise((resolve,reject)=>{
+        let total=n1+n2;
+        resolve(total);
+
+    });
+
+}
+async function main(){
+    let output=add(10,20);
+    console.log("output",output);
+}
+main();
+main1(){
+    add(10,20).then((p1)=>{
+        console.log("result",p1);
+    });
+main();
+main1();
+
+=========================================================================================
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//==============================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
